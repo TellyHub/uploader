@@ -96,8 +96,7 @@ async def youtube_dl_call_back(bot, update):
         progress=progress_for_pyrogram,
         progress_args=(
             Translation.DOWNLOAD_START,
-            update.message,
-            start_time
+            update.message
         )
     )
 
