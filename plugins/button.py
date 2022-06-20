@@ -88,15 +88,19 @@ async def youtube_dl_call_back(bot, update):
                 l = entity.length
                 youtube_dl_url = youtube_dl_url[o:o + l]
     await bot.edit_message_text(
+        chat_id=update.message.chat.id,
+        #document=download_directory,
+        #thumb=thumbnail,
+        #caption=description,
+        reply_to_message_id=update.message.reply_to_message.message_id,
         progress=progress_for_pyrogram,
         progress_args=(
-        Translation.DOWNLOAD_START,
-        update.message,
-        chat_id=update.message.chat.id,
-        message_id=update.message.message_id,
-        start_time
+            Translation.DOWNLOAD_START,
+            update.message,
+            start_time
+        )
     )
-   )
+
     description = Translation.CUSTOM_CAPTION_UL_FILE
     if "fulltitle" in response_json:
         description = response_json["fulltitle"][0:1021]
